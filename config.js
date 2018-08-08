@@ -1,7 +1,7 @@
 const path = require('path')
 
 module.exports = {
-  dbFile: path.resolve(__dirname, '/db.json'),
+  dbFile: path.resolve(__dirname, 'db.json'),
   port: process.env.PORT || 8080,
   redirectUri: (process.env.HOST || '') + '/auth/instagram/callback',
   instagram: {
