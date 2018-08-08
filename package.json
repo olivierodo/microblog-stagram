@@ -4,6 +4,7 @@
   "description": "Microblogging website backed by instagram",
   "main": "app.js",
   "scripts": {
+    "start": "node app.js",
     "start:dev": "nodemon -e js -r dotenv/config app.js",
     "test": "standard && echo \"NO TEST BRO!\""
   },
