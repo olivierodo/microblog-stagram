@@ -1,0 +1,29 @@
+{
+  "name": "blogstagram",
+  "version": "1.0.0",
+  "description": "Microblogging website backed by instagram",
+  "main": "app.js",
+  "scripts": {
+    "start:dev": "nodemon -e js -r dotenv/config app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "instagram",
+    "microblogging",
+    "nodejs"
+  ],
+  "author": "Olivier Rodomond",
+  "license": "ISC",
+  "devDependencies": {
+    "dotenv": "^6.0.0",
+    "jest": "^23.4.2",
+    "nodemon": "^1.18.3",
+    "standard": "^11.0.1"
+  },
+  "dependencies": {
+    "apicache": "^1.2.3",
+    "express": "^4.16.3",
+    "lowdb": "^1.0.0",
+    "node-instagram": "^4.1.0"
+  }
+}
