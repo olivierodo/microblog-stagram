@@ -1,0 +1,27 @@
+.title {
+  top: 15em;
+  position: fixed;
+}
+
+.post {
+  display: flex;
+  margin-bottom: 30px;
+}
+.post .description{
+  padding-left: 20px;
+  vertical-align: bottom;
+  height: 100%;
+  align-self: flex-end;
+}
+
+.fader {
+  background: #fff;
+  box-shadow: 1px 20px 20px #fff;
+  -webkit-box-shadow: 1px 20px 20px #fff; 
+  -moz-box-shadow: 1px 20px 20px #fff; 
+  height: 170px;
+  opacity:1;
+  position: fixed;
+  z-index:95;
+}
+

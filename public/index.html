@@ -10,109 +10,39 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.css">
-    <link rel="stylesheet" href="gallery-grid.css">
-
+    <link rel="stylesheet" href="/assets/style.css">
 
 </head>
 <body>
 
-<div class="container gallery-container">
-
-    <h1>Bootstrap 3 Gallery</h1>
-
-    <p class="page-description text-center">Grid Layout With Zoom Effect</p>
-    
-    <div class="tz-gallery">
-
-        <div class="row" id="posts">
-             <!--  example
-            <div class="col-sm-6 col-md-4">
-                <a class="lightbox" href="../images/park.jpg">
-                    <img src="../images/park.jpg" alt="Park">
-                </a>
-            </div>
-            -->
+<div class="container ">
+  <div class="title col-md-3">
+    <h1>The MicroBlog</h1>
+    <h4>Because we feele that need each other to make a world better</h4>
+  </div>
+  <div class="fader col-md-3 col-md-offset-6 "></div>
+  <div class="col-md-offset-3 col-md-8" id="posts">
+     <!--
+      <div class="row col-md-12 post">
+        <div class="col-md-6">
+          <img class="img-responsive" src="https://scontent.cdninstagram.com/vp/747243a7c10bc2a857c6cd2c425342fe/5C0B5AF7/t51.2885-15/e35/s320x320/37812769_1928067007281142_6118276536303878144_n.jpg">
         </div>
-        <button id="previous" onclick="page.go('previous')">previous</button>
-        <button id="next" onclick="page.go('next')">next</button>
-    </div>
+        <div class="col-md-4 description">
+          So when it said Cheese 🧀 I was a little apprehensive but it's actually very tasty. This a coco caramel cheese tea
+        </div>
+      </div>
+      -->
+  </div>
+  <div class="col-md-1">
+  </div>
+  <!-- 
+  <button id="previous" onclick="page.go('previous')">previous</button>
+  <button id="next" onclick="page.go('next')">next</button>
+  -->
+  </div>
 
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
-<script>
-   const page = {
-     previous : null,
-     list : [],
-     next : null,
-     setCurrent : function(currentId) {
-       const pos = this.list.indexOf(currentId);
-       if (-1 !== pos) {
-         this.list = this.list.slice(0,pos);
-       } else {
-         this.list.push(currentId);
-       }
-       this.previous = this.list[this.list.length-2];
-       console.log(this.previous, this.list);
-       return this;
-     },
-     setNext : function(pagination) {
-       this.next = pagination && pagination.next_max_id;
-       return this;
-     },
-     render : function () {
-       document.getElementById('previous').style.display = this.previous ? 'block' : 'none';
-       document.getElementById('next').style.display = this.next ? 'block' : 'none';
-     },
-     go : function(direction) {
-       direction = this[direction];
-       console.log(direction);
-       loagPost(direction);
-     }
-   };
-
-  function getHtmlMedia(post) {
-    const el = document.createElement("div");
-    el.className="post col-sm-6 col-md-4";
-
-    const link = document.createElement('a');
-    link.className="lightbox";
-    link.href= post.images.standard_resolution.url;
-
-    const image = document.createElement('img');
-    image.src= post.images.low_resolution.url;
-    image.alt = post.tags.join(',');
-
-     link.appendChild(image);  
-     el.appendChild(link);  
-     return el;
-  }
-
-  function loagPost(id) {
-    fetch('/posts?p=' + id)
-      .then(response => response.json())
-      .then(response => {
-        page
-          .setCurrent(response.data[0].id, undefined === id)
-          .setNext(response.pagination)
-          .render();
-        return response.data;
-      })
-      .then(response => {
-        Array.from(document.getElementsByClassName('post')).forEach(el => el.remove());
-        response
-          .map(getHtmlMedia)
-          .forEach( el => {
-            console.log(el);
-            document.getElementById("posts").appendChild(el);
-          });
-        baguetteBox.run('.tz-gallery');
-      });
-  };
-
-  window.onload = loagPost();
-
-</script>
+<script src="/assets/main.js"></script>
 </body>
 </html>
